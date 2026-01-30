@@ -1,0 +1,573 @@
+meta {
+  name: Create Webhook
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/webhooks
+  body: json
+  auth: inherit
+}
+
+params:path {
+  site_id: 123
+}
+
+body:json {
+  {
+    "id": "",
+    "triggerType": "",
+    "url": "",
+    "workspaceId": "",
+    "siteId": "",
+    "filter": {
+      "name": ""
+    },
+    "lastTriggered": "",
+    "createdOn": ""
+  }
+}
+
+example {
+  name: Createwebhookresponse201example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "582266e0cd48de0f0e3c6d8b",
+          "triggerType": "form_submission",
+          "siteId": "562ac0395358780a1f5e6fbd",
+          "workspaceId": "4f4e46fd476ea8c507000001",
+          "createdOn": "2022-11-08T23:59:28.572Z",
+          "lastTriggered": "2023-02-08T23:59:28.572Z",
+          "filter": null,
+          "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse400example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse400example1 (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse401example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse401example1 (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse404example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse404example1 (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse429example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse429example1 (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse500example (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createwebhookresponse500example1 (Createwebhookrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "582266e0cd48de0f0e3c6d8b",
+        "triggerType": "form_submission",
+        "siteId": "562ac0395358780a1f5e6fbd",
+        "workspaceId": "4f4e46fd476ea8c507000001",
+        "createdOn": "2022-11-08T23:59:28.572Z",
+        "lastTriggered": "2023-02-08T23:59:28.572Z",
+        "filter": null,
+        "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,445 @@
+meta {
+  name: List Webhooks
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/sites/:site_id/webhooks
+  body: none
+  auth: inherit
+}
+
+params:path {
+  site_id: 123
+}
+
+example {
+  name: Listwebhooksresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "webhooks": [
+            {
+              "id": "57ca0a9e418c504a6e1acbb6",
+              "triggerType": "form_submission",
+              "siteId": "562ac0395358780a1f5e6fbd",
+              "workspaceId": "4f4e46fd476ea8c507000001",
+              "filter": {
+                "name": "Email Form"
+              },
+              "createdOn": "2016-09-02T23:26:22.241Z",
+              "lastTriggered": "2023-02-08T23:59:28.572Z",
+              "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+            },
+            {
+              "id": "578d85cce0c47cd2865f4cf2",
+              "triggerType": "form_submission",
+              "siteId": "562ac0395358780a1f5e6fbd",
+              "workspaceId": "4f4e46fd476ea8c507000001",
+              "filter": {
+                "name": "Email Form"
+              },
+              "createdOn": "2016-07-19T01:43:40.585Z",
+              "lastTriggered": "2023-02-08T23:59:28.572Z",
+              "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+            },
+            {
+              "id": "578d85cce0c47cd2865f4cf3",
+              "triggerType": "form_submission",
+              "siteId": "562ac0395358780a1f5e6fbd",
+              "workspaceId": "4f4e46fd476ea8c507000001",
+              "filter": {
+                "name": "Email Form"
+              },
+              "createdOn": "2016-07-19T01:43:40.605Z",
+              "lastTriggered": "2023-02-08T23:59:28.572Z",
+              "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listwebhooksresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/webhooks
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

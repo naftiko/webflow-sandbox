@@ -1,0 +1,263 @@
+meta {
+  name: Get Authorization Info
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/token/introspect
+  body: none
+  auth: inherit
+}
+
+example {
+  name: Introspectresponse200example
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "authorization": {
+            "id": "55818d58616600637b9a5786",
+            "createdOn": "2016-10-03T23:12:00.755Z",
+            "lastUsed": "2016-10-10T21:41:12.736Z",
+            "grantType": "authorization_code",
+            "rateLimit": 60,
+            "scope": "assets:read,assets:write",
+            "authorizedTo": {
+              "siteIds": [
+                "62f3b1f7eafac55d0c64ef91"
+              ],
+              "workspaceIds": [
+                "52f3b1f7eafac55d0c64ef91"
+              ],
+              "userIds": [
+                "545bbecb7bdd6769632504a7"
+              ]
+            }
+          },
+          "application": {
+            "id": "55131cd036c09f7d07883dfc",
+            "description": "My Amazing App",
+            "homepage": "https://webflow.com",
+            "displayName": "My Amazing App"
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse401example
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse4xxexample
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 4XX
+      text: Unknown
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse4xxexample1
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 4XX
+      text: Unknown
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse5xxexample
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 5XX
+      text: Unknown
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Introspectresponse5xxexample1
+  
+  request: {
+    url: {{baseUrl}}/token/introspect
+    method: GET
+    mode: none
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 5XX
+      text: Unknown
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

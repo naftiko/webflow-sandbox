@@ -1,0 +1,403 @@
+meta {
+  name: Remove Webhook
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{baseUrl}}/webhooks/:webhook_id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  webhook_id: 123
+}
+
+example {
+  name: 204 Response
+  description: Request was successful. No Content is returned.
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    status: {
+      code: 204
+      text: No Content
+    }
+  
+    body: {
+      type: text
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse400example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse401example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse404example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse429example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse500example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Removewebhookresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: DELETE
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

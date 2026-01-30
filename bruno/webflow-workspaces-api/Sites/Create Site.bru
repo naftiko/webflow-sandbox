@@ -1,0 +1,670 @@
+meta {
+  name: Create Site
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/workspaces/:workspace_id/sites
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  workspace_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "name": "",
+    "templateName": "",
+    "parentFolderId": ""
+  }
+}
+
+example {
+  name: Createsiteresponse201example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "42e98c9a982ac9b8b742",
+          "workspaceId": "42e63e98c9a982ac9b8b742",
+          "displayName": "The Hitchhiker's Guide to the Galaxy",
+          "shortName": "hitchhikers-guide",
+          "previewUrl": "https://screenshots.webflow.com/sites/6258612d1ee792848f805dcf/20231219211811_d5990556c743f33b7071300a03bf67e6.png",
+          "timeZone": "Magrathea/FactoryFloor",
+          "createdOn": "1979-10-12T12:00:00.000Z",
+          "lastUpdated": "2023-04-02T12:42:00.000Z",
+          "lastPublished": "2023-04-02T12:42:00.000Z",
+          "parentFolderId": "1as2d3f4g5h6j7k8l9z0x1c2v3b4n5m6",
+          "customDomains": [
+            {
+              "id": "589a331aa51e760df7ccb89d",
+              "url": "hitchhikersguide.galaxy"
+            },
+            {
+              "id": "589a331aa51e760df7ccb89e",
+              "url": "heartofgold.spaceship"
+            }
+          ],
+          "locales": {
+            "primary": {
+              "id": "653fd9af6a07fc9cfd7a5e57",
+              "cmsLocaleId": "653ad57de882f528b32e810e",
+              "enabled": false,
+              "displayName": "English (United States)",
+              "displayImageId": null,
+              "redirect": true,
+              "subdirectory": "",
+              "tag": "en-US"
+            },
+            "secondary": [
+              {
+                "id": "653fd9af6a07fc9cfd7a5e56",
+                "cmsLocaleId": "653fd9af6a07fc9cfd7a5e5d",
+                "enabled": true,
+                "displayName": "French (France)",
+                "displayImageId": null,
+                "subdirectory": "fr-fr",
+                "tag": "fr-FR"
+              },
+              {
+                "id": "654112a3a525b2739d97664c",
+                "cmsLocaleId": "654112a3a525b2739d97664f",
+                "enabled": true,
+                "displayName": "Spanish (Mexico)",
+                "displayImageId": null,
+                "subdirectory": "es-mx",
+                "tag": "es-MX"
+              }
+            ]
+          },
+          "dataCollectionEnabled": true,
+          "dataCollectionType": "always"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Newlycreatedsite
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "670ecf86817e3cc7a510eb6a",
+          "workspaceId": "625860a7a6c16d624927122f",
+          "displayName": "The Hitchiker's Guide",
+          "shortName": "hitchikers-guide",
+          "previewUrl": null,
+          "timeZone": null,
+          "createdOn": "2024-10-15T20:24:38.134Z",
+          "lastUpdated": "2024-10-15T20:24:38.326Z",
+          "lastPublished": null,
+          "parentFolderId": "670ece123598db72d9648be1",
+          "customDomains": [],
+          "locales": null,
+          "dataCollectionEnabled": true,
+          "dataCollectionType": "always"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse400example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse401example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 403 Response
+  description: Forbidden request
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse404example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse429example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse500example
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createsiteresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/workspaces/:workspace_id/sites
+    method: POST
+    mode: json
+    params:path: {
+      workspace_id: 123
+    }
+  
+    body:json: {
+      {
+        "name": "",
+        "templateName": "",
+        "parentFolderId": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

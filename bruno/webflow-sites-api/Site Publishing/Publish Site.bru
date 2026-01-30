@@ -1,0 +1,502 @@
+meta {
+  name: Publish Site
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/publish
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "customDomains": [],
+    "publishToWebflowSubdomain": false
+  }
+}
+
+example {
+  name: 202 Response (Domainids)
+  description: Request accepted
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 202
+      text: Accepted
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "customDomains": [
+            {
+              "id": "",
+              "url": "",
+              "lastPublished": ""
+            }
+          ],
+          "publishToWebflowSubdomain": false
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 400 Response (Domainids)
+  description: Bad Request
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse401example (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse401example1 (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse403example (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse403example1 (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "forbidden",
+          "message": "User is not authorized to perform this action",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse404example (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse404example1 (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse429example (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Sitepublishresponse429example1 (Domainids)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/publish
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "customDomains": [
+          "660c6449dd97ebc7346ac629",
+          "660c6449dd97ebc7346ac62f"
+        ],
+        "publishToWebflowSubdomain": false
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

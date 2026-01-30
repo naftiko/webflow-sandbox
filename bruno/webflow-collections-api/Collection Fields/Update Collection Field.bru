@@ -1,0 +1,310 @@
+meta {
+  name: Update Collection Field
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  collection_id: 123
+  field_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read cms:read cms:write ecommerce:read ecommerce:write sites:read sites:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "displayName": "",
+    "helpText": ""
+  }
+}
+
+example {
+  name: Successfully updated field (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "5e2a1b3c4d5e6f7890a1b2c3",
+          "isEditable": true,
+          "isRequired": false,
+          "type": "PlainText",
+          "slug": "author-name",
+          "displayName": "Updated Author Name",
+          "helpText": "Updated help text",
+          "validations": null
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Bad request error (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Unauthorized error (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Resource not found error (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The collection cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Rate limit exceeded error (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Internal server error (Request to update a field)
+  
+  request: {
+    url: {{baseUrl}}/collections/:collection_id/fields/:field_id
+    method: PATCH
+    mode: json
+    params:path: {
+      collection_id: 123
+      field_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Updated Author Name",
+        "helpText": "Updated help text"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

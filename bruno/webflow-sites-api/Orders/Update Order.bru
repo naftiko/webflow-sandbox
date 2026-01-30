@@ -1,0 +1,945 @@
+meta {
+  name: Update Order
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseUrl}}/sites/:site_id/orders/:order_id
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+  order_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "comment": "",
+    "shippingProvider": "",
+    "shippingTracking": "",
+    "shippingTrackingURL": ""
+  }
+}
+
+example {
+  name: Updateorderresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "orderId": "fc7-128",
+          "status": "refunded",
+          "comment": "Customer requested gift wrapping and a personalized note saying: Happy Birthday, Ford! 🎉 Please ensure the item is packed with extra bubble wrap for safe transit.",
+          "orderComment": "Please gift wrap with a personal note saying \"Happy Birthday, Ford! 🎉",
+          "acceptedOn": "2024-03-29T21:29:21.555Z",
+          "fulfilledOn": "2024-03-29T21:29:21.555Z",
+          "refundedOn": "2024-04-08T18:25:04.238Z",
+          "disputedOn": "2024-03-29T21:29:21.555Z",
+          "disputeUpdatedOn": "2024-03-29T21:29:21.555Z",
+          "disputeLastStatus": "charge_refunded",
+          "customerPaid": {
+            "unit": "USD",
+            "value": 11873,
+            "string": "$ 118.73 USD"
+          },
+          "netAmount": {
+            "unit": "USD",
+            "value": 11262,
+            "string": "$ 112.62 USD"
+          },
+          "applicationFee": {
+            "unit": "USD",
+            "value": 237,
+            "string": "$ 2.37 USD"
+          },
+          "allAddresses": [
+            {
+              "type": "billing",
+              "addressee": "Arthur Dent",
+              "line1": "20 W 34th St",
+              "line2": "Empire State Building",
+              "city": "New York",
+              "state": "New York",
+              "country": "US",
+              "postalCode": "10118"
+            },
+            {
+              "type": "shipping",
+              "addressee": "Arthur Dent",
+              "line1": "20 W 34th St",
+              "line2": "Empire State Building",
+              "city": "New York",
+              "state": "New York",
+              "country": "US",
+              "postalCode": "10118"
+            }
+          ],
+          "shippingAddress": {
+            "type": "shipping",
+            "japanType": "kanji",
+            "addressee": "Arthur Dent",
+            "line1": "20 W 34th St",
+            "line2": "Empire State Building",
+            "city": "New York",
+            "state": "New York",
+            "country": "US",
+            "postalCode": "10118"
+          },
+          "shippingProvider": "Shipping Company, Co.",
+          "shippingTracking": "tr00000000001",
+          "shippingTrackingURL": "https://www.shippingcompany.com/tracking/tr00000000001",
+          "customerInfo": {
+            "fullName": "Arthur Dent",
+            "email": "arthur.dent@example.com"
+          },
+          "purchasedItems": [
+            {
+              "count": 1,
+              "rowTotal": {
+                "unit": "USD",
+                "value": 5561,
+                "string": "$ 55.61 USD"
+              },
+              "productId": "66072fb61b89448912e26791",
+              "productName": "Luxurious Fresh Ball",
+              "productSlug": "luxurious-fresh-ball",
+              "variantId": "66072fb71b89448912e2683f",
+              "variantName": "Luxurious Fresh Ball Generic: Bronze, Practical: Plastic",
+              "variantSlug": "luxurious-fresh-ball-generic-bronze-practical-plastic",
+              "variantSKU": "luxurious-fresh-ball-generic-bronze-practical-plastic",
+              "variantImage": {
+                "url": "https://dev-assets.website-files.com/66072f39417a2a35b2589cc7/66072fb51b89448912e2672c_image14.jpeg",
+                "file": null
+              },
+              "variantPrice": {
+                "unit": "USD",
+                "value": 5561,
+                "string": "$ 55.61 USD"
+              },
+              "weight": 11,
+              "height": 70,
+              "width": 82,
+              "length": 9
+            },
+            {
+              "count": 1,
+              "rowTotal": {
+                "unit": "USD",
+                "value": 5344,
+                "string": "$ 53.44 USD"
+              },
+              "productId": "66072fb61b89448912e26799",
+              "productName": "Recycled Steel Gloves",
+              "productSlug": "recycled-steel-gloves",
+              "variantId": "66072fb91b89448912e26ab9",
+              "variantName": "Recycled Steel Gloves Electronic: Granite, Handcrafted: grey",
+              "variantSlug": "recycled-steel-gloves-electronic-granite-handcrafted-grey",
+              "variantSKU": "recycled-steel-gloves-electronic-granite-handcrafted-grey",
+              "variantImage": {
+                "url": "https://dev-assets.website-files.com/66072f39417a2a35b2589cc7/66072fb51b89448912e2671e_image2.jpeg",
+                "file": null
+              },
+              "variantPrice": {
+                "unit": "USD",
+                "value": 5344,
+                "string": "$ 53.44 USD"
+              },
+              "weight": 38,
+              "height": 85,
+              "width": 76,
+              "length": 40
+            }
+          ],
+          "purchasedItemsCount": 2,
+          "stripeDetails": {
+            "customerId": "cus_PpRsNHwWdUoRKR",
+            "paymentMethod": "pm_1OzmzBJYFi4lcbXWHKNdXU7j",
+            "chargeId": "ch_3OzmzDJYFi4lcbXW1ndkkrH2",
+            "disputeId": null,
+            "paymentIntentId": "pi_3OzmzDJYFi4lcbXW1hTBW6ft",
+            "subscriptionId": null,
+            "refundId": "re_3OzmzDJYFi4lcbXW1kFAmlBk",
+            "refundReason": "fraudulent"
+          },
+          "stripeCard": {
+            "last4": "4242",
+            "brand": "Visa",
+            "ownerName": "Arthur Dent",
+            "expires": {
+              "month": 4,
+              "year": 2024
+            }
+          },
+          "paypalDetails": null,
+          "customData": [
+            {}
+          ],
+          "metadata": {
+            "isBuyNow": false,
+            "hasDownloads": false,
+            "paymentProcessor": "stripe"
+          },
+          "billingAddress": {
+            "type": "billing",
+            "addressee": "Arthur Dent",
+            "line1": "20 W 34th St",
+            "line2": "Empire State Building",
+            "city": "New York",
+            "state": "New York",
+            "country": "US",
+            "postalCode": "10118"
+          },
+          "totals": {
+            "subtotal": {
+              "unit": "USD",
+              "value": 10905,
+              "string": "$ 109.05 USD"
+            },
+            "extras": [
+              {
+                "type": "tax",
+                "name": "State Taxes",
+                "description": "NY Taxes (4.00%)",
+                "price": {
+                  "unit": "USD",
+                  "value": 436,
+                  "string": "$ 4.36 USD"
+                }
+              },
+              {
+                "type": "tax",
+                "name": "City Taxes",
+                "description": "NEW YORK Taxes (4.88%)",
+                "price": {
+                  "unit": "USD",
+                  "value": 532,
+                  "string": "$ 5.32 USD"
+                }
+              },
+              {
+                "type": "shipping",
+                "name": "Flat",
+                "description": "",
+                "price": {
+                  "unit": "USD",
+                  "value": 0,
+                  "string": "$ 0.00 USD"
+                }
+              }
+            ],
+            "total": {
+              "unit": "USD",
+              "value": 11873,
+              "string": "$ 118.73 USD"
+            }
+          },
+          "isCustomerDeleted": false,
+          "isShippingRequired": true,
+          "downloadFiles": [
+            {
+              "id": "5e9a5eba75e0ac242e1b6f64",
+              "name": "New product guide",
+              "url": "https://webflow.com/dashboard/download-digital-product?payload=5d93ba5e38c6b0160ab711d3;e7634a;5eb1aac72912ec06f561278c;5e9a5eba75e0ac242e1b6f63:ka2nehxy:4a1ee0a632feaab94294350087215ed89533f2f530903e3b933b638940e921aa"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse403example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse403example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "missing_scopes",
+          "message": "OAuthForbidden: You are missing the following scopes - components:write",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse409example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse409example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "ecommerce_not_enabled",
+          "message": "Ecommerce is not yet initialized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateorderresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/orders/:order_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      order_id: 123
+    }
+  
+    body:json: {
+      {
+        "comment": "",
+        "shippingProvider": "",
+        "shippingTracking": "",
+        "shippingTrackingURL": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

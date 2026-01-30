@@ -1,0 +1,1249 @@
+meta {
+  name: Create Collection
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/collections
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "displayName": "",
+    "singularName": "",
+    "slug": "",
+    "fields": []
+  }
+}
+
+example {
+  name: Createcollectionresponse200example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "7f15043107e2fc95644e93807ee25dd6",
+          "displayName": "Guide Entries",
+          "singularName": "Guide Entry",
+          "fields": [
+            {
+              "id": "5e2a1b3c4d5e6f7890a1b2c3",
+              "isEditable": true,
+              "isRequired": true,
+              "type": "PlainText",
+              "slug": "name",
+              "displayName": "Entry Title",
+              "helpText": "Name of the entry.",
+              "validations": null
+            },
+            {
+              "id": "5e2a1b3c4d5e6f7890a1b2c4",
+              "isEditable": true,
+              "isRequired": true,
+              "type": "PlainText",
+              "slug": "slug",
+              "displayName": "Slug",
+              "helpText": "Slug of the entry.",
+              "validations": null
+            },
+            {
+              "id": "6f7e8d9c0b1a2e3d4c5b6a7f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "PlainText",
+              "slug": "summary",
+              "displayName": "Summary",
+              "helpText": "A short summary of the entry.",
+              "validations": null
+            },
+            {
+              "id": "1a2b3c4d5e6f7a8b9c0d1e2f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "RichText",
+              "slug": "entry-html",
+              "displayName": "Entry HTML",
+              "helpText": "The HTML content of the entry.",
+              "validations": null
+            },
+            {
+              "id": "7e8d9c0b1a2e3d4c5b6a7f8e",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Image",
+              "slug": "illustration-image",
+              "displayName": "Illustration Image",
+              "helpText": "An image of the entry.",
+              "validations": null
+            },
+            {
+              "id": "2f3e4d5c6b7a8e9d0c1b2a3f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "VideoLink",
+              "slug": "demonstration-video",
+              "displayName": "Demonstration Video",
+              "helpText": "A video of the entry.",
+              "validations": null
+            },
+            {
+              "id": "8e9d0c1b2a3f4e5d6c7b8a9e",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Link",
+              "slug": "more-info-link",
+              "displayName": "More Info Link",
+              "helpText": "A link to more information about the entry.",
+              "validations": null
+            },
+            {
+              "id": "3f4e5d6c7b8a9e0d1c2b3a4f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Number",
+              "slug": "importance-level",
+              "displayName": "Importance Level",
+              "helpText": "The importance level of the entry.",
+              "validations": {
+                "format": "integer",
+                "allowNegative": false,
+                "allowZero": false,
+                "minValue": 1,
+                "maxValue": 5
+              }
+            },
+            {
+              "id": "9e0d1c2b3a4f5e6d7c8b9a0e",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Switch",
+              "slug": "is-essential",
+              "displayName": "Is Essential",
+              "helpText": "Is this entry essential?",
+              "validations": null
+            },
+            {
+              "id": "4f5e6d7c8b9a0e1d2c3b4a5f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Date",
+              "slug": "first-mentioned",
+              "displayName": "First Mentioned",
+              "helpText": "Date of the first mention of the subject.",
+              "validations": null
+            },
+            {
+              "id": "0e1d2c3b4a5f6e7d8c9b0a1e",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Color",
+              "slug": "towel-color",
+              "displayName": "Towel Color",
+              "helpText": "The color of the towel.",
+              "validations": null
+            },
+            {
+              "id": "5f6e7d8c9b0a1e2d3c4b5a6f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Reference",
+              "slug": "related-entry",
+              "displayName": "Related Entry",
+              "helpText": "A related entry.",
+              "validations": {
+                "collectionId": "7f15043107e2fc95644e93807ee25dd6"
+              }
+            },
+            {
+              "id": "1e2d3c4b5a6f7e8d9c0b1a2f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "MultiReference",
+              "slug": "mentioned-in-entries",
+              "displayName": "Mentioned In Entries",
+              "helpText": "Entries that mention this subject.",
+              "validations": {
+                "collectionId": "7f15043107e2fc95644e93807ee25dd6"
+              }
+            },
+            {
+              "id": "6f7e8d9c0b1a2e3d4c5b6a8f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Option",
+              "slug": "item-type",
+              "displayName": "Item Type",
+              "helpText": "The type of item.",
+              "validations": {
+                "options": [
+                  {
+                    "name": "Survival Gear",
+                    "id": "66f6e966c9e1dc700a857ca3"
+                  },
+                  {
+                    "name": "Gadget",
+                    "id": "66f6e966c9e1dc700a857ca4"
+                  },
+                  {
+                    "name": "Other",
+                    "id": "66f6e966c9e1dc700a857ca5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "2e3d4c5b6a7f8e9d0c1b2a4f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "File",
+              "slug": "guide-file",
+              "displayName": "Guide File",
+              "helpText": null,
+              "validations": null
+            },
+            {
+              "id": "7f8e9d0c1b2a3f4e5d6c8b9e",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Email",
+              "slug": "contributor-email",
+              "displayName": "Contributor Email",
+              "helpText": null,
+              "validations": null
+            },
+            {
+              "id": "3a4f5e6d7c8b9a0e1d2c4b5f",
+              "isEditable": true,
+              "isRequired": false,
+              "type": "Phone",
+              "slug": "emergency-contact",
+              "displayName": "Emergency Contact",
+              "helpText": null,
+              "validations": null
+            }
+          ],
+          "slug": "guide-entry",
+          "createdOn": "2024-04-12T12:42:00.000Z",
+          "lastUpdated": "2024-04-12T12:42:00.000Z"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse200example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "displayName": "Blog Posts",
+          "singularName": "Blog Post",
+          "slug": "posts",
+          "createdOn": "2016-10-24T19:41:48Z",
+          "lastUpdated": "2016-10-24T19:42:38Z",
+          "fields": [
+            {
+              "type": "PlainText",
+              "displayName": "Title",
+              "slug": "title",
+              "isRequired": true,
+              "helpText": "The title of the blog post"
+            },
+            {
+              "type": "RichText",
+              "displayName": "Content",
+              "slug": "content",
+              "isRequired": true,
+              "helpText": "The content of the blog post"
+            },
+            {
+              "type": "Reference",
+              "displayName": "Author",
+              "slug": "author",
+              "isRequired": true,
+              "helpText": "The author of the blog post",
+              "metadata": {
+                "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+              }
+            }
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse400example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse400example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "validation_error",
+          "message": "Validation Error: Provided ID is invalid",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse401example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse401example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse404example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse404example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse409example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse409example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "duplicate_collection",
+          "message": "Collection already exists",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse429example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse429example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse500example (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createcollectionresponse500example1 (Createcollectionrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/collections
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "displayName": "Blog Posts",
+        "singularName": "Blog Post",
+        "slug": "posts",
+        "fields": [
+          {
+            "type": "PlainText",
+            "displayName": "Title",
+            "slug": "title",
+            "isRequired": true,
+            "helpText": "The title of the blog post"
+          },
+          {
+            "type": "RichText",
+            "displayName": "Content",
+            "slug": "content",
+            "isRequired": true,
+            "helpText": "The content of the blog post"
+          },
+          {
+            "type": "Reference",
+            "displayName": "Author",
+            "slug": "author",
+            "isRequired": true,
+            "helpText": "The author of the blog post",
+            "metadata": {
+              "collectionId": "23cc2d952d4e4631ffd4345d2743db4e"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

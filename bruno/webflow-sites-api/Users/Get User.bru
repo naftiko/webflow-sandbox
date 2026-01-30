@@ -1,0 +1,492 @@
+meta {
+  name: Get User
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/sites/:site_id/users/:user_id
+  body: none
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+  user_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+example {
+  name: Getuserresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "6287ec36a841b25637c663df",
+          "isEmailVerified": true,
+          "lastUpdated": "2022-05-20T13:46:12.093Z",
+          "invitedOn": "2022-05-20T13:46:12.093Z",
+          "createdOn": "2022-05-20T13:46:12.093Z",
+          "lastLogin": "2022-05-20T13:46:12.093Z",
+          "status": "verified",
+          "accessGroups": [
+            {
+              "slug": "webflowers",
+              "type": "admin"
+            }
+          ],
+          "data": {
+            "name": "Arthur Dent",
+            "email": "arthur.dent@mostlyharmless.com",
+            "accept-privacy": true,
+            "accept-communications": true,
+            "favoriteDrink": "Tea",
+            "currentPlanet": "Somewhere in the vicinity of Betelgeuse"
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "validation_error",
+          "message": "Validation Error: Provided ID is invalid",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 403 Response
+  description: Forbidden
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getuserresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users/:user_id
+    method: GET
+    mode: none
+    params:path: {
+      site_id: 123
+      user_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

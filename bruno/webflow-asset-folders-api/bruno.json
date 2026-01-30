@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "webflow-asset-folders-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

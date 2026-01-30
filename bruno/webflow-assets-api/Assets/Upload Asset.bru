@@ -1,0 +1,324 @@
+meta {
+  name: Upload Asset
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/assets
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write sites:read sites:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "fileName": "",
+    "fileHash": "",
+    "parentFolder": ""
+  }
+}
+
+example {
+  name: Successfully initiated asset upload (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "uploadDetails": {
+            "acl": "public-read",
+            "bucket": "webflow-bucket-name",
+            "X-Amz-Algorithm": "AWS4-HMAC-SHA256",
+            "X-Amz-Credential": "AKIAIOSFODNN7EXAMPLE/20230411/us-east-1/s3/aws4_request",
+            "X-Amz-Date": "20230411T163221Z",
+            "key": "643021114e290e0d3a0602b2/64358b9544249dc43d37d2b7_file.png",
+            "Policy": "eyJleHBpcmF0aW9uIjoiMjAyMy0wNC0xMVQxNzozMjoyMVoiLCJjb25kaXRpb25zIjpbXX0=",
+            "X-Amz-Signature": "f853c598c1e34234d987f2b3f98765e4321abc987654321fedcba0987654321",
+            "success_action_status": "201",
+            "content-type": "image/png",
+            "Cache-Control": "max-age=31536000, must-revalidate"
+          },
+          "contentType": "image/png",
+          "id": "64358b9544249dc43d37d2b7",
+          "parentFolder": "6436b1ce5281cace05b65aea",
+          "uploadUrl": "https://s3.amazonaws.com/webflow-dev-assets/643021114e290e0d3a0602b2/64358b9544249dc43d37d2b7_file.png",
+          "assetUrl": "https://s3.amazonaws.com/webflow-prod-assets/6258612d1ee792848f805dcf/660d907ab9e91e3e9f56385e_file.png",
+          "hostedUrl": "https://dev-assets.website-files.com/643021114e290e0d3a0602b2/64358b9544249dc43d37d2b7_file.png",
+          "originalFileName": "file.png",
+          "createdOn": "2023-04-11T16:32:21.804Z",
+          "lastUpdated": "2023-04-12T20:31:03.197Z"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Bad request error (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Unauthorized error (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Resource not found error (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The asset cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Rate limit exceeded error (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Internal server error (Request to initiate asset upload)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/assets
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "fileName": "file.png",
+        "fileHash": "3c7d87c9575702bc3b1e991f4d3c638e",
+        "parentFolder": "6436b1ce5281cace05b65aea"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

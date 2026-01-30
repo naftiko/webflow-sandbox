@@ -1,0 +1,415 @@
+meta {
+  name: Get Webhook
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/webhooks/:webhook_id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  webhook_id: 123
+}
+
+example {
+  name: Getwebhookresponse200example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "582266e0cd48de0f0e3c6d8b",
+          "triggerType": "form_submission",
+          "siteId": "562ac0395358780a1f5e6fbd",
+          "workspaceId": "4f4e46fd476ea8c507000001",
+          "createdOn": "2022-11-08T23:59:28.572Z",
+          "lastTriggered": "2023-02-08T23:59:28.572Z",
+          "filter": null,
+          "url": "https://webhook.site/7f7f7f7f-7f7f-7f7f-7f7f-7f7f7f7f7f7f"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse400example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse401example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse404example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse429example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse500example
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getwebhookresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/webhooks/:webhook_id
+    method: GET
+    mode: none
+    params:path: {
+      webhook_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

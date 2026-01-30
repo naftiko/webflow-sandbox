@@ -1,0 +1,553 @@
+meta {
+  name: Register Script - Hosted
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "hostedLocation": "",
+    "integrityHash": "",
+    "canCopy": false,
+    "version": "",
+    "displayName": ""
+  }
+}
+
+example {
+  name: Posthostedscriptresponse201example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "cms_slider",
+          "displayName": "CMS Slider",
+          "hostedLocation": "https://cdn.jsdelivr.net/.../cmsslider.js",
+          "integrityHash": "sha384-J+YlJ8v0gpaRoKH7SbFbEmxOZlAxLiwNjfSsBhDooGa5roXlPPpXbEevck4J7YZ+",
+          "canCopy": true,
+          "version": "1.0.0",
+          "createdOn": "2022-10-26T00:28:54.191Z"
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Posthostedscriptresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/registered_scripts/hosted
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "hostedLocation": "",
+        "integrityHash": "",
+        "canCopy": false,
+        "version": "",
+        "displayName": ""
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

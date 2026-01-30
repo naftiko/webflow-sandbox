@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "webflow-sites-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,1742 @@
+meta {
+  name: Create Product & SKU
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/sites/:site_id/products
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "publishStatus": "",
+    "product": {
+      "fieldData": ""
+    },
+    "sku": {
+      "fieldData": {
+        "sku-values": {},
+        "name": "",
+        "slug": "",
+        "price": {
+          "value": 0,
+          "unit": "",
+          "currency": ""
+        },
+        "compare-at-price": {
+          "value": 0,
+          "unit": ""
+        },
+        "ec-sku-billing-method": "",
+        "ec-sku-subscription-plan": {
+          "interval": "",
+          "frequency": 0,
+          "trial": 0,
+          "plans": [
+            {
+              "platform": "",
+              "id": "",
+              "status": ""
+            }
+          ]
+        },
+        "main-image": "",
+        "sku": "",
+        "sku-properties": [
+          {
+            "id": "",
+            "name": "",
+            "enum": [
+              {
+                "id": "",
+                "name": "",
+                "slug": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+
+example {
+  name: 200 Response (Createproductrequestexample)
+  description: Request was successful
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "product": {
+            "id": "",
+            "cmsLocaleId": "",
+            "lastPublished": "",
+            "lastUpdated": "",
+            "createdOn": "",
+            "isArchived": false,
+            "isDraft": false,
+            "fieldData": {
+              "name": "",
+              "slug": "",
+              "description": "",
+              "shippable": false,
+              "sku-properties": [
+                {
+                  "id": "",
+                  "name": "",
+                  "enum": [
+                    {
+                      "id": "",
+                      "name": "",
+                      "slug": ""
+                    }
+                  ]
+                }
+              ],
+              "category": [],
+              "tax-category": "",
+              "default-sku": "",
+              "ec-product-type": ""
+            }
+          },
+          "skus": [
+            {
+              "id": "",
+              "cmsLocaleId": "",
+              "lastPublished": "",
+              "lastUpdated": "",
+              "createdOn": "",
+              "fieldData": {
+                "sku-values": {},
+                "name": "",
+                "slug": "",
+                "price": {
+                  "value": 0,
+                  "unit": "",
+                  "currency": ""
+                },
+                "compare-at-price": {
+                  "value": 0,
+                  "unit": ""
+                },
+                "ec-sku-billing-method": "",
+                "ec-sku-subscription-plan": {
+                  "interval": "",
+                  "frequency": 0,
+                  "trial": 0,
+                  "plans": [
+                    {
+                      "platform": "",
+                      "id": "",
+                      "status": ""
+                    }
+                  ]
+                },
+                "main-image": "",
+                "sku": "",
+                "sku-properties": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "enum": [
+                      {
+                        "id": "",
+                        "name": "",
+                        "slug": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse400example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse400example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse401example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse401example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse403example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse403example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "missing_scopes",
+          "message": "OAuthForbidden: You are missing the following scopes - components:write",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse404example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse404example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse409example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse409example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "ecommerce_not_enabled",
+          "message": "Ecommerce is not yet initialized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse429example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse429example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse500example (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Createproductresponse500example1 (Createproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products
+    method: POST
+    mode: json
+    params:path: {
+      site_id: 123
+    }
+  
+    body:json: {
+      {
+        "publishStatus": "staging",
+        "product": {
+          "fieldData": {
+            "name": "Colorful T-shirt",
+            "slug": "colorful-t-shirt",
+            "description": "Our best-selling t-shirt available in multiple colors and sizes",
+            "sku-properties": [
+              {
+                "id": "color",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "red",
+                    "name": "Red",
+                    "slug": "red"
+                  },
+                  {
+                    "id": "yellow",
+                    "name": "Yellow",
+                    "slug": "yellow"
+                  },
+                  {
+                    "id": "blue",
+                    "name": "Blue",
+                    "slug": "blue"
+                  }
+                ]
+              },
+              {
+                "id": "size",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "small",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "medium",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "large",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "sku": {
+          "fieldData": {
+            "name": "Colorful T-shirt - Red Small",
+            "slug": "colorful-t-shirt-red-small",
+            "price": {
+              "value": 2499,
+              "currency": "USD",
+              "unit": "USD"
+            },
+            "main-image": "https://rocketamp-sample-store.myshopify.com/cdn/shop/products/Gildan_2000_Antique_Cherry_Red_Front_1024x1024.jpg?v=1527232987"
+          }
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

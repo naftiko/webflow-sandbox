@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "webflow-forms-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

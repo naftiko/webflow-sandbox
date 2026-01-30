@@ -1,0 +1,548 @@
+meta {
+  name: Get Component Properties
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  ~localeId: 
+  ~branchId: 
+  ~limit: 
+  ~offset: 
+}
+
+params:path {
+  site_id: 123
+  component_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+example {
+  name: Getcomponentpropertiesresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "componentId": "658205daa3e8206a523b5ad4",
+          "properties": [
+            {
+              "propertyId": "a245c12d-995b-55ee-5ec7-aa36a6cad623",
+              "label": "Title",
+              "type": "Plain Text",
+              "text": {
+                "html": null,
+                "text": "The Hitchhiker's Guide to the Galaxy"
+              }
+            },
+            {
+              "propertyId": "a245c12d-995b-55ee-5ec7-aa36a6cad627",
+              "label": "Content",
+              "type": "Rich Text",
+              "text": {
+                "html": "<div><h3>Don't Panic!</h3><p>Always know where your towel is.</p></div>",
+                "text": null
+              }
+            }
+          ],
+          "pagination": {
+            "limit": 2,
+            "offset": 0,
+            "total": 2
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Getcomponentpropertiesresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/components/:component_id/properties
+    method: GET
+    mode: none
+    params:query: {
+      ~localeId: 
+      ~branchId: 
+      ~limit: 
+      ~offset: 
+    }
+  
+    params:path: {
+      site_id: 123
+      component_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

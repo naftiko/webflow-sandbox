@@ -1,0 +1,776 @@
+meta {
+  name: List Users
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/sites/:site_id/users
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  ~offset: 
+  ~limit: 
+  ~sort: 
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+example {
+  name: Listusersresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "users": [
+            {
+              "id": "6287ec36a841b25637c663df",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-20T13:46:12.093Z",
+              "createdOn": "2022-05-20T13:46:12.093Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "vogon-construction-crew",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "zaphod.beeblebrox@heart-of-gold.com",
+                "name": "Zaphod Beeblebrox"
+              }
+            },
+            {
+              "id": "6287ec36a841b25637c663f0",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-19T05:32:04.581Z",
+              "createdOn": "2022-05-19T05:32:04.581Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "improbability-drive-test-subjects",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "ford.prefect@hitchhikers-guide.com",
+                "name": "Ford Prefect"
+              }
+            },
+            {
+              "id": "6287ec36a841b25637c663d9",
+              "isEmailVerified": true,
+              "lastUpdated": "2022-05-17T03:34:06.720Z",
+              "createdOn": "2022-05-17T03:34:06.720Z",
+              "status": "verified",
+              "accessGroups": [
+                {
+                  "slug": "heart-of-gold-crew",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "arthur.dent@earthling.com",
+                "name": "Arthur Dent"
+              }
+            },
+            {
+              "id": "6287ec37a841b25637c6641b",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-15T03:46:09.748Z",
+              "createdOn": "2022-05-15T03:46:09.748Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "hitchhikers-guide-research-team",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "marvin@paranoid-android.com",
+                "name": "Marvin the Paranoid Android"
+              }
+            },
+            {
+              "id": "6287ec37a841b25637c66449",
+              "isEmailVerified": true,
+              "lastUpdated": "2022-05-15T02:55:38.786Z",
+              "createdOn": "2022-05-15T02:55:38.786Z",
+              "status": "verified",
+              "accessGroups": [
+                {
+                  "slug": "milliways-reservationists",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "trillian@trillian-alternative.com",
+                "name": "Trillian"
+              }
+            }
+          ],
+          "count": 5,
+          "limit": 5,
+          "offset": 0,
+          "total": 201
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse200example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "users": [
+            {
+              "id": "6287ec36a841b25637c663df",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-20T13:46:12.093Z",
+              "createdOn": "2022-05-20T13:46:12.093Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "vogon-construction-crew",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "zaphod.beeblebrox@heart-of-gold.com",
+                "name": "Zaphod Beeblebrox"
+              }
+            },
+            {
+              "id": "6287ec36a841b25637c663f0",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-19T05:32:04.581Z",
+              "createdOn": "2022-05-19T05:32:04.581Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "improbability-drive-test-subjects",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "ford.prefect@hitchhikers-guide.com",
+                "name": "Ford Prefect"
+              }
+            },
+            {
+              "id": "6287ec36a841b25637c663d9",
+              "isEmailVerified": true,
+              "lastUpdated": "2022-05-17T03:34:06.720Z",
+              "createdOn": "2022-05-17T03:34:06.720Z",
+              "status": "verified",
+              "accessGroups": [
+                {
+                  "slug": "heart-of-gold-crew",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "arthur.dent@earthling.com",
+                "name": "Arthur Dent"
+              }
+            },
+            {
+              "id": "6287ec37a841b25637c6641b",
+              "isEmailVerified": false,
+              "lastUpdated": "2022-05-15T03:46:09.748Z",
+              "createdOn": "2022-05-15T03:46:09.748Z",
+              "status": "unverified",
+              "accessGroups": [
+                {
+                  "slug": "hitchhikers-guide-research-team",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "marvin@paranoid-android.com",
+                "name": "Marvin the Paranoid Android"
+              }
+            },
+            {
+              "id": "6287ec37a841b25637c66449",
+              "isEmailVerified": true,
+              "lastUpdated": "2022-05-15T02:55:38.786Z",
+              "createdOn": "2022-05-15T02:55:38.786Z",
+              "status": "verified",
+              "accessGroups": [
+                {
+                  "slug": "milliways-reservationists",
+                  "type": "admin"
+                }
+              ],
+              "data": {
+                "accept-privacy": false,
+                "accept-communications": false,
+                "email": "trillian@trillian-alternative.com",
+                "name": "Trillian"
+              }
+            }
+          ],
+          "count": 5,
+          "limit": 5,
+          "offset": 0,
+          "total": 201
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "validation_error",
+          "message": "Validation Error: Provided ID is invalid",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 403 Response
+  description: Forbidden
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listusersresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/users
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

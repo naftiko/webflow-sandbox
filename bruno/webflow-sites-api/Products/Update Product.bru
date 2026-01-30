@@ -1,0 +1,1708 @@
+meta {
+  name: Update Product
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/sites/:site_id/products/:product_id
+  body: json
+  auth: oauth2
+}
+
+params:path {
+  site_id: 123
+  product_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+body:json {
+  {
+    "publishStatus": "",
+    "product": {
+      "id": "",
+      "cmsLocaleId": "",
+      "lastPublished": "",
+      "lastUpdated": "",
+      "createdOn": "",
+      "isArchived": false,
+      "isDraft": false,
+      "fieldData": {
+        "name": "",
+        "slug": "",
+        "description": "",
+        "shippable": false,
+        "sku-properties": [
+          {
+            "id": "",
+            "name": "",
+            "enum": [
+              {
+                "id": "",
+                "name": "",
+                "slug": ""
+              }
+            ]
+          }
+        ],
+        "category": [],
+        "tax-category": "",
+        "default-sku": "",
+        "ec-product-type": ""
+      }
+    },
+    "sku": {
+      "id": "",
+      "cmsLocaleId": "",
+      "lastPublished": "",
+      "lastUpdated": "",
+      "createdOn": "",
+      "fieldData": {
+        "sku-values": {},
+        "name": "",
+        "slug": "",
+        "price": {
+          "value": 0,
+          "unit": "",
+          "currency": ""
+        },
+        "compare-at-price": {
+          "value": 0,
+          "unit": ""
+        },
+        "ec-sku-billing-method": "",
+        "ec-sku-subscription-plan": {
+          "interval": "",
+          "frequency": 0,
+          "trial": 0,
+          "plans": [
+            {
+              "platform": "",
+              "id": "",
+              "status": ""
+            }
+          ]
+        },
+        "main-image": "",
+        "sku": "",
+        "sku-properties": [
+          {
+            "id": "",
+            "name": "",
+            "enum": [
+              {
+                "id": "",
+                "name": "",
+                "slug": ""
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse200example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "660eb7a486d1d6e0412292d7",
+          "cmsLocaleId": "653ad57de882f528b32e810e",
+          "lastPublished": "2024-04-04T14:24:19.467Z",
+          "lastUpdated": "2024-04-04T14:30:19.282Z",
+          "createdOn": "2024-04-04T14:22:28.547Z",
+          "isArchived": false,
+          "isDraft": false,
+          "fieldData": {
+            "tax-category": "standard-taxable",
+            "shippable": true,
+            "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+            "sku-properties": [
+              {
+                "id": "31b77fa66fa376c2c0abb458d5be39fb",
+                "name": "Size",
+                "enum": [
+                  {
+                    "id": "8d21a625d655ab260e9941c27180c75b",
+                    "name": "Small",
+                    "slug": "small"
+                  },
+                  {
+                    "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                    "name": "Medium",
+                    "slug": "medium"
+                  },
+                  {
+                    "id": "ec7877d6137ecf7ec86f726c135b1812",
+                    "name": "Large",
+                    "slug": "large"
+                  }
+                ]
+              },
+              {
+                "id": "74d3738e62c568d5634dd6989daec5ec",
+                "name": "Color",
+                "enum": [
+                  {
+                    "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                    "name": "Royal Blue",
+                    "slug": "royal-blue"
+                  },
+                  {
+                    "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                    "name": "Crimson Red",
+                    "slug": "crimson-red"
+                  },
+                  {
+                    "id": "996cd95c97fd5620d0a374c835b37205",
+                    "name": "Forrest Green",
+                    "slug": "forrest-green"
+                  }
+                ]
+              }
+            ],
+            "name": "T-Shirt",
+            "description": "A plain t-shirt",
+            "slug": "t-shirt",
+            "default-sku": "66072fb71b89448912e2681c"
+          }
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse400example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse400example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "bad_request",
+          "message": "Bad Request: Request is malformed",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse401example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse401example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse403example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse403example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "missing_scopes",
+          "message": "OAuthForbidden: You are missing the following scopes - components:write",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse404example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse404example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse409example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse409example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 409
+      text: Conflict
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "ecommerce_not_enabled",
+          "message": "Ecommerce is not yet initialized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse429example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse429example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse500example (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Updateproductresponse500example1 (Updateproductrequestexample)
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/products/:product_id
+    method: PATCH
+    mode: json
+    params:path: {
+      site_id: 123
+      product_id: 123
+    }
+  
+    body:json: {
+      {
+        "id": "660eb7a486d1d6e0412292d7",
+        "cmsLocaleId": "653ad57de882f528b32e810e",
+        "lastPublished": "2024-04-04T14:24:19.467Z",
+        "lastUpdated": "2024-04-04T14:30:19.282Z",
+        "createdOn": "2024-04-04T14:22:28.547Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+          "tax-category": "standard-taxable",
+          "shippable": true,
+          "ec-product-type": "b6ccc1830db4b1babeb06a9ac5f6dd76",
+          "sku-properties": [
+            {
+              "id": "31b77fa66fa376c2c0abb458d5be39fb",
+              "name": "Size",
+              "enum": [
+                {
+                  "id": "8d21a625d655ab260e9941c27180c75b",
+                  "name": "Small",
+                  "slug": "small"
+                },
+                {
+                  "id": "ecdca17106ad86c0dfe3b5f3ac8be6c9",
+                  "name": "Medium",
+                  "slug": "medium"
+                },
+                {
+                  "id": "ec7877d6137ecf7ec86f726c135b1812",
+                  "name": "Large",
+                  "slug": "large"
+                }
+              ]
+            },
+            {
+              "id": "74d3738e62c568d5634dd6989daec5ec",
+              "name": "Color",
+              "enum": [
+                {
+                  "id": "e539b0d6c3a609cd06ddb2da804f68f0",
+                  "name": "Royal Blue",
+                  "slug": "royal-blue"
+                },
+                {
+                  "id": "68d98f2fbafc0fd45651cddc44798dd0",
+                  "name": "Crimson Red",
+                  "slug": "crimson-red"
+                },
+                {
+                  "id": "996cd95c97fd5620d0a374c835b37205",
+                  "name": "Forrest Green",
+                  "slug": "forrest-green"
+                }
+              ]
+            }
+          ],
+          "name": "T-Shirt",
+          "description": "A plain t-shirt",
+          "slug": "t-shirt",
+          "default-sku": "66072fb71b89448912e2681c"
+        }
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

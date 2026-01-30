@@ -1,0 +1,556 @@
+meta {
+  name: List Access Groups
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/sites/:site_id/accessgroups
+  body: none
+  auth: oauth2
+}
+
+params:query {
+  ~offset: 
+  ~limit: 
+  ~sort: 
+}
+
+params:path {
+  site_id: 123
+}
+
+auth:oauth2 {
+  grant_type: authorization_code
+  callback_url: {{oauth_callback_url}}
+  authorization_url: https://webflow.com/oauth/authorize
+  access_token_url: https://api.webflow.com/oauth/token
+  refresh_token_url: {{oauth_refresh_url}}
+  client_id: {{oauth_client_id}}
+  client_secret: {{oauth_client_secret}}
+  scope: authorized_user:read assets:read assets:write cms:read cms:write comments:read comments:write custom_code:read custom_code:write ecommerce:read ecommerce:write forms:read forms:write pages:read pages:write components:read components:write sites:read sites:write users:read site_activity:read users:write workspace:read workspace:write site_config:read site_config:write
+  state: {{oauth_state}}
+  pkce: false
+  credentials_placement: header
+  credentials_id: 123
+  token_placement: header
+  token_header_prefix: Bearer
+  auto_fetch_token: false
+  auto_refresh_token: true
+}
+
+example {
+  name: Listaccessgroupsresponse200example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "accessGroups": [
+            {
+              "id": "62be58d404be8a6cc900c081",
+              "name": "Research Team",
+              "shortId": "rt",
+              "slug": "hitchhikers-guide-research-team",
+              "createdOn": "2022-08-01T19:41:48.349Z"
+            },
+            {
+              "id": "65a96161991e77bbb4a6c573",
+              "name": "Admin",
+              "shortId": "ad",
+              "slug": "admin",
+              "createdOn": "2022-08-01T19:41:48.349Z"
+            }
+          ],
+          "count": 1,
+          "limit": 10,
+          "offset": 0,
+          "total": 1
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse400example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse400example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 400
+      text: Bad Request
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "validation_error",
+          "message": "Validation Error: Provided ID is invalid",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse401example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse401example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 401
+      text: Unauthorized
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: 403 Response
+  description: Forbidden
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 403
+      text: Forbidden
+    }
+  
+    body: {
+      type: json
+      content: '''
+  
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse404example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse404example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 404
+      text: Not Found
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "resource_not_found",
+          "message": "Requested resource not found: The site cannot be found",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse429example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse429example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 429
+      text: Too Many Requests
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "too_many_requests",
+          "message": "Too many requests",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse500example
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "not_authorized",
+          "message": "Request not authorized",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}
+
+example {
+  name: Listaccessgroupsresponse500example1
+  
+  request: {
+    url: {{baseUrl}}/sites/:site_id/accessgroups
+    method: GET
+    mode: none
+    params:query: {
+      ~offset: 
+      ~limit: 
+      ~sort: 
+    }
+  
+    params:path: {
+      site_id: 123
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 500
+      text: Internal Server Error
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "code": "internal_error",
+          "message": "An Internal Error occurred",
+          "externalReference": null,
+          "details": []
+        }
+      '''
+    }
+  }
+}

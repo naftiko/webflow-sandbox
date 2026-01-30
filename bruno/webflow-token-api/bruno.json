@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "webflow-token-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
