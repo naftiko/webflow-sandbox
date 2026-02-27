@@ -14,7 +14,7 @@ tags:
   - Pages
   - Content
 
-image: https://naftiko.s3.us-east-1.amazonaws.com/naftiko-logo-blue-icon.png
+image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
 
 created: '2026-01-29'
 modified: '2026-02-13'
@@ -30,6 +30,9 @@ apis:
         provide organizational structure for digital assets, allowing you to
         group and categorize images, documents, and other files uploaded to your
         Webflow site.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Asset Folders
         - Assets
@@ -51,6 +54,9 @@ apis:
         images, documents, videos, and other files that can be uploaded and used
         throughout your Webflow projects. This API supports uploading,
         retrieving, updating, and deleting assets.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Assets
       properties:
@@ -71,6 +77,9 @@ apis:
         database-like structures that store content for your Webflow site. This
         API provides comprehensive CRUD operations for collections, collection
         fields, collection items, and inventory management for e-commerce SKUs.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Collections
         - Collection Fields
@@ -93,6 +102,9 @@ apis:
         retrieve, update, and delete form submissions collected from your
         Webflow sites. Form submissions contain user-entered data from forms on
         your published sites.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Form Submissions
         - Forms
@@ -113,6 +125,9 @@ apis:
         API for managing forms in Webflow. This API allows you to retrieve form
         definitions, schemas, and submissions from your Webflow sites. Forms are
         used to collect user input on your published websites.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Forms
       properties:
@@ -132,6 +147,9 @@ apis:
         API for managing pages in Webflow. This API allows you to retrieve page
         metadata, update page settings, manage page content (DOM), and handle
         custom code scripts for your Webflow site pages.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Pages
         - Page Content
@@ -153,6 +171,9 @@ apis:
         Comprehensive API for managing Webflow sites. Includes operations for
         site configuration, publishing, domains, collections, pages, components,
         assets, forms, users, e-commerce, and more.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Sites
         - Publishing
@@ -174,6 +195,9 @@ apis:
         API for OAuth token management and authorization in Webflow. Provides
         endpoints for retrieving authorized user information and introspecting
         access tokens.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Token Management
         - Authorization
@@ -193,6 +217,9 @@ apis:
       description: >-
         API for managing webhooks in Webflow. Allows creating, listing,
         retrieving, and deleting webhook subscriptions for various site events.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Webhooks
       properties:
@@ -211,6 +238,9 @@ apis:
       description: >-
         API for managing Webflow workspaces. Provides operations for creating
         sites within workspaces and accessing workspace audit logs.
+      humanURL: https://github.com/naftiko/webflow-sandbox
+      baseURL: http://localhost:8080/rest/webflow-sandbox/1.0.0
+      image: https://naftiko.github.io/docs/images/monogram/monogram_full_color_512.png
       tags:
         - Workspaces
         - Audit Logs
@@ -228,6 +258,7 @@ apis:
 common:
 
   - type: Summary
+    url: https://github.com/naftiko/webflow-sandbox
     data:
       numberOfApis: 10
       numberOfPaths: 77
@@ -415,6 +446,7 @@ common:
     url: https://github.com/orgs/naftiko/discussions
 
   - type: Standards
+    url: https://github.com/naftiko/webflow-sandbox
     data:
 
       - name: APIs.json
@@ -446,6 +478,7 @@ common:
         docUrl: https://apicommons.org/
 
   - type: Services
+    url: https://github.com/naftiko/webflow-sandbox
     data: []
 
 maintainers:
